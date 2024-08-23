@@ -61,7 +61,7 @@
         </constraints>
         <properties>
           <horizontalAlignment value="0"/>
-          <text value="-"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="1122f" class="javax.swing.JLabel">
@@ -82,7 +82,7 @@
         <properties>
           <horizontalAlignment value="0"/>
           <selectionColor color="-13330065"/>
-          <text value="-"/>
+          <text value=""/>
         </properties>
       </component>
       <vspacer id="99b73">
@@ -107,7 +107,7 @@
         </constraints>
         <properties>
           <horizontalAlignment value="0"/>
-          <text value="-"/>
+          <text value=""/>
           <toolTipText value="Codigo oficina"/>
         </properties>
       </component>

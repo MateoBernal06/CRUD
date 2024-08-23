@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class ActualizarUsuario {
-    private JTextField ingreso_id;
+    private JTextField ingreso_nombre;
     private JButton boton_buscar;
     private JLabel mensaje_con;
     private JTextField nuevo_puesto;
@@ -32,7 +32,7 @@ public class ActualizarUsuario {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int id_trabajador=Integer.parseInt(ingreso_id.getText());
+                String trabajador= ingreso_nombre.getText();
                 String puesto_a=nuevo_puesto.getText();
                 String oficina_a=nueva_oficina.getText();
                 int tiempo_a=Integer.parseInt(nuevo_tiempo.getText());
@@ -40,12 +40,13 @@ public class ActualizarUsuario {
 
                 try(Connection conexion_2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/crud","root","122928")){
 
-                    String sql="UPDATE trabajador SET puesto=?, tiempo=?, oficina=? WHERE id="+id_trabajador;
+                    String sql="UPDATE trabajador SET puesto=?, tiempo=?, oficina=? WHERE nombre_trabajador=?";
 
                     try(PreparedStatement preparedStatement = conexion_2.prepareStatement(sql)){
                         preparedStatement.setString(1, puesto_a);
                         preparedStatement.setInt(2,tiempo_a);
                         preparedStatement.setString(3, oficina_a);
+                        preparedStatement.setString(4, trabajador);
                         int filasAfectadas=preparedStatement.executeUpdate();
 
 

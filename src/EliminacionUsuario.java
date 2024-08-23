@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class EliminacionUsuario {
     private JButton boton_eliminar;
-    private JTextField ingreso_id;
+    private JTextField ingreso_trabajador;
     private JButton boton_volver;
     JPanel panel_eliminacion;
     private JLabel mensaje_con;
@@ -35,13 +35,13 @@ public class EliminacionUsuario {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int id_trabajador=Integer.parseInt(ingreso_id.getText());
+                String trabajador=ingreso_trabajador.getText();
                 try(Connection conexion_2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/crud","root","122928")){
 
-                    String sql = "DELETE FROM trabajador WHERE id=?";
+                    String sql = "DELETE FROM trabajador WHERE nombre_trabajador=?";
 
                     try(PreparedStatement preparedStatement = conexion_2.prepareStatement(sql)){
-                        preparedStatement.setInt(1, id_trabajador);
+                        preparedStatement.setString(1, trabajador);
                         int filasAfectadas=preparedStatement.executeUpdate();
 
                         if (filasAfectadas>0){

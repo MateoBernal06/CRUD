@@ -1,15 +1,11 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
 
 public class VerUsuario {
     JPanel panel_ver;
-    private JTextField ingreso_id;
+    private JTextField ingreso_trabajador;
     private JButton boton_ver;
     private JTextPane lugar_datos;
     private JButton boton_volver;
@@ -34,7 +30,8 @@ public class VerUsuario {
         boton_ver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id_trabajador=Integer.parseInt(ingreso_id.getText());
+
+                String trabajador=ingreso_trabajador.getText();
                 String dbURL="jdbc:mysql://localhost:3306/crud";
                 String dbUserName="root";
                 String dbpassword="122928";
@@ -43,7 +40,7 @@ public class VerUsuario {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection connection = DriverManager.getConnection(dbURL,dbUserName,dbpassword);
                     Statement statement = connection.createStatement();
-                    ResultSet resultSet= statement.executeQuery("SELECT * FROM trabajador WHERE id="+id_trabajador);
+                    ResultSet resultSet= statement.executeQuery("SELECT * FROM trabajador WHERE nombre_trabajador='" + trabajador + "'");
 
                     if (resultSet.next()){
                         int id_ingresado = resultSet.getInt("id");
